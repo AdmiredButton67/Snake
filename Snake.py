@@ -9,6 +9,7 @@ Exercises
 """
 
 from random import randrange
+from timeit import repeat
 from turtle import *
 
 from freegames import square, vector
@@ -53,16 +54,22 @@ def move():
     for body in snake:
         square(body.x, body.y, 9, 'black')
 
-#Mover comida
+    #Mover comida
 
-
-    food.x+= randrange(-10,10)*10
-    food.y+= randrange(-10,10)*10
-        
-
-#Asignar limites a la comida para que no salga del cuadro
-
-    square(food.x, food.y, 9, 'green')
+    cont=0
+    if (cont%4==0):
+        food.x+= randrange(-10,11,10)
+        food.y+= randrange(-10,11,10)
+    if -200>food.x: #Arrevaza el limite de x, y lo regresa
+        food.x += 15
+    if food.x>190:
+        food.x-= 15
+    if -200>food.y: #Arrevaza el limite de y, y lo regresa
+        food.y += 15
+    if food.y>190:
+        food.y-= 15
+             
+    square(food.x, food.y, 9, 'blue') #Dibuja la comida en movimiento
     update()
     ontimer(move, 100)
 
