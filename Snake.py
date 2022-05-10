@@ -15,7 +15,7 @@ from freegames import square, vector
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
-aim = vector(10, 0)
+aim = vector(0, -10)
 
 
 def change(x, y):
@@ -43,7 +43,7 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
-        food.x = randrange(-15, 15) * 10
+        food.x = randrange(-15, 15) * 10 
         food.y = randrange(-15, 15) * 10
     else:
         snake.pop(0)
@@ -52,6 +52,15 @@ def move():
 
     for body in snake:
         square(body.x, body.y, 9, 'black')
+
+#Mover comida
+
+
+    food.x+= randrange(-10,10)*10
+    food.y+= randrange(-10,10)*10
+        
+
+#Asignar limites a la comida para que no salga del cuadro
 
     square(food.x, food.y, 9, 'green')
     update()
