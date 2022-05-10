@@ -7,6 +7,7 @@ Nombre Luis Armando Mandujano Chávez // A01655899
 """
 
 from random import randrange
+from timeit import repeat
 from turtle import *
 import random 
 
@@ -14,7 +15,7 @@ from freegames import square, vector
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
-aim = vector(10, 0)
+aim = vector(0, -10)
 
 
 cs = random.randint(1,3)
@@ -60,7 +61,7 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
-        food.x = randrange(-15, 15) * 10
+        food.x = randrange(-15, 15) * 10 
         food.y = randrange(-15, 15) * 10
     else:
         snake.pop(0)
@@ -70,7 +71,23 @@ def move():
     for body in snake:
         square(body.x, body.y, 9, h)
 
-    square(food.x, food.y, 9, P)
+
+    #Mover comida aletariamente dentro de los limites
+    cont=0
+    if (cont%4==0):
+        food.x+= randrange(-10,11,10)
+        food.y+= randrange(-10,11,10)
+    if -200>food.x: #Si arrevaza el limite de x, y lo regresa
+        food.x += 15
+    if food.x>190:
+        food.x-= 15
+    if -200>food.y: #Si arrevaza el limite de y, y lo regresa
+        food.y += 15
+    if food.y>190:
+        food.y-= 15
+             
+    square(food.x, food.y, 9, 'blue') #Dibuja la comida 
+
     update()
     ontimer(move, 100)
 
