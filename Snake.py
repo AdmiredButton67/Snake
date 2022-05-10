@@ -12,6 +12,7 @@ Nombre Luis Armando Mandujano Chávez
 
 from random import randrange
 from turtle import *
+import random 
 
 from freegames import square, vector
 
@@ -20,6 +21,24 @@ snake = [vector(10, 0)]
 aim = vector(10, 0)
 
 
+cs = random.randint(1,3)
+if cs == 1:
+    h = "blue"
+elif cs == 2:
+    h = "purple"
+else:
+    h = "yellow"
+
+cf = random.randint(1,3)
+if cf == 1:
+    P = "organge"
+elif cf == 2:
+    P = "brown"
+else:
+    P = "grey"
+
+
+ 
 def change(x, y):
     """Change snake direction."""
     aim.x = x
@@ -53,9 +72,9 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, h)
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, P)
     update()
     ontimer(move, 100)
 
