@@ -1,8 +1,6 @@
 """Snake, classic arcade game.
-
-Nombre Luis Armando Mandujano Chávez // A01655899
-
-
+Luis Armando Mandujano Chávez // A01655899
+Lisa Valeria Rodríguez Alanís // A01656306
 
 """
 
